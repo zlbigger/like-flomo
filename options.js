@@ -14,11 +14,11 @@ async function load() {
 async function save() {
   const input = document.getElementById('api');
   const msg = document.getElementById('msg');
-  const url = input.value.trim();
+  const url = (input && input.value ? input.value.trim() : '');
   const codeInput = document.getElementById('inviteCodeInput');
   const codeDisplay = document.getElementById('inviteCodeDisplay');
   const invite = document.getElementById('inviteText');
-  const code = (codeInput.value || '').trim() || 'MTU5ODA5';
+  const code = (((codeInput && codeInput.value) || '').trim()) || 'MTU5ODA5';
   if (!url) {
     msg.textContent = '请输入有效的 Flomo API 地址';
     msg.style.color = '#ef4444';
@@ -34,7 +34,7 @@ async function save() {
 async function testSend() {
   const input = document.getElementById('api');
   const msg = document.getElementById('msg');
-  const url = input.value.trim();
+  const url = (input && input.value ? input.value.trim() : '');
   if (!url) {
     msg.textContent = '请先填写并保存 Flomo API 地址';
     msg.style.color = '#ef4444';
@@ -59,9 +59,12 @@ async function testSend() {
   }
 }
 
-document.getElementById('save').addEventListener('click', save);
-document.getElementById('test').addEventListener('click', testSend);
-document.getElementById('copyCode').addEventListener('click', async () => {
+const btnSave = document.getElementById('save');
+if (btnSave) btnSave.addEventListener('click', save);
+const btnTest = document.getElementById('test');
+if (btnTest) btnTest.addEventListener('click', testSend);
+const btnCopyCode = document.getElementById('copyCode');
+if (btnCopyCode) btnCopyCode.addEventListener('click', async () => {
   const msg = document.getElementById('msg');
   const text = document.getElementById('inviteCodeDisplay').textContent;
   try {
@@ -79,7 +82,8 @@ document.getElementById('copyCode').addEventListener('click', async () => {
     msg.style.color = '#10b981';
   }
 });
-document.getElementById('copyInvite').addEventListener('click', async () => {
+const btnCopyInvite = document.getElementById('copyInvite');
+if (btnCopyInvite) btnCopyInvite.addEventListener('click', async () => {
   const msg = document.getElementById('msg');
   const text = document.getElementById('inviteText').value;
   try {
@@ -96,7 +100,8 @@ document.getElementById('copyInvite').addEventListener('click', async () => {
     msg.style.color = '#10b981';
   }
 });
-document.getElementById('copyMP').addEventListener('click', async () => {
+const btnCopyMP = document.getElementById('copyMP');
+if (btnCopyMP) btnCopyMP.addEventListener('click', async () => {
   const msg = document.getElementById('msg');
   const text = document.getElementById('mpNameDisplay').textContent;
   try {
