@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Like Sync to Flomo",
+  "version": "1.3.0",
+  "description": "在 Twitter、微博、即刻 点赞后同步内容到 Flomo",
+  "permissions": ["storage"],
+  "host_permissions": ["https://flomoapp.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["content_twitter.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://weibo.com/*", "https://www.weibo.com/*"],
+      "js": ["content_weibo.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://web.okjike.com/*", "https://okjike.com/*"],
+      "js": ["content_jike.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
