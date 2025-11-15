@@ -24,6 +24,17 @@
       "matches": ["https://web.okjike.com/*", "https://okjike.com/*"],
       "js": ["content_jike.js"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["https://www.zhihu.com/*", "https://zhihu.com/*", "https://zhuanlan.zhihu.com/*"],
+      "js": ["content_zhihu.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://www.xiaohongshu.com/*", "https://xiaohongshu.com/*"],
+      "js": ["content_xhs.js"],
+      "run_at": "document_start",
+      "all_frames": true
     }
   ]
 }
